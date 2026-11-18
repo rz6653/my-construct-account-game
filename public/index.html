@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My game account and data lab</title>
+<style>
+body{font:17px/1.6 system-ui;color:#17324a;background:#f3f6fa;margin:0}main{max-width:850px;margin:30px auto;padding:28px;background:white;border-radius:14px}label{display:block;margin:12px 0}input,button{font:inherit;padding:8px}button{margin:5px;cursor:pointer}pre{padding:16px;background:#eef3f7;white-space:pre-wrap;overflow-wrap:anywhere}td,th{padding:8px;text-align:left}input{max-width:100%;box-sizing:border-box}[hidden]{display:none!important}
+</style>
+<main>
+<h1>My game account and data lab</h1>
+<p>Sign in before saving progress. Use school-approved test accounts. Passwords are handled by Netlify Identity.</p>
+<p id="status" role="status">Loading account…</p>
+<section id="google-signin">
+<button id="google" type="button">Continue with Google</button>
+<p>Use your school Google account, or use the email/password form below.</p>
+</section>
+<form id="credentials">
+<label>Email <input id="email" type="email" autocomplete="username" required></label>
+<label>Password <input id="password" type="password" autocomplete="current-password" minlength="10" required></label>
+<button type="submit">Sign in</button><button id="signup" type="button">Create account</button>
+<button id="recover" type="button">Send password reset email</button>
+</form>
+<form id="set-password" hidden>
+<label>New password (at least 10 characters) <input id="new-password" type="password" minlength="10" autocomplete="new-password" required></label>
+<button type="submit">Set password</button>
+</form>
+<section id="signed-in" hidden>
+<p>Leaderboard alias: <strong id="alias"></strong></p>
+<button id="logout">Sign out</button> <a href="/play.html">Play my exported game</a>
+<p>Signing out does not save progress. Save first.</p>
+<fieldset id="data-controls">
+<legend>Test cloud data</legend>
+<label>Game ID <input id="game" value="my-game" maxlength="40"></label>
+<label>Score <input id="score" type="number" value="120" min="0" max="1000000" step="1"></label>
+<label>Level <input id="level" type="number" value="3" min="1" max="999" step="1"></label>
+<label>Coins <input id="coins" type="number" value="8" min="0" max="1000000" step="1"></label>
+<button data-action="save">Save progress only</button><button data-action="load">Load progress</button>
+<button data-action="submit">Submit current score</button><button data-action="leaderboard">Refresh leaderboard</button>
+<p>Save stores progress. Submit replaces your leaderboard score, even if lower. Refresh fetches the latest submissions.</p>
+</fieldset>
+<pre id="result">Responses appear here.</pre>
+<table><thead><tr><th>Player</th><th>Latest submitted score</th><th>Submitted at</th></tr></thead><tbody id="scores"></tbody></table>
+</section>
+</main>
+<script type="module" src="/account.js"></script>
+</html>
